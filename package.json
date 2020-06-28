@@ -1,0 +1,31 @@
+{
+  "name": "p5js-typescript-fusebox",
+  "license": "MIT",
+  "author": {
+    "name": "Troy Sandal",
+    "url": "https://www.github.com/troysandal"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:troysandal/p5js-typescript-fusebox.git"
+  },
+  "version": "0.0.1",
+  "dependencies": {
+    "chroma": "0.0.1",
+    "chroma.ts": "^1.0.9",
+    "chromotome": "^1.17.2",
+    "p5": "^0.10.2"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.7",
+    "@types/p5": "^0.9.0",
+    "fuse-box": "^3.7.1",
+    "typescript": "^3.7.2",
+    "uglify-js": "^3.6.8"
+  },
+  "scripts": {
+    "compile": "tsc",
+    "sketch": "node fuse.js",
+    "dist-os": "node fuse.js dist-open-processing"
+  }
+}
