@@ -14,6 +14,15 @@ export class GridMachine {
         this.scale_factor = Math.sqrt(this.rows * this.rows + this.cols * this.cols)
     }
 
+    public orderedGrid(){
+        return this.generateGrid().map((row) => {
+            return row.map((cell) => {
+                return {...cell, value: 1-cell.index / (this.rows * this.cols)}
+            })
+        })
+    }
+
+
     public randomGrid(){
         return this.generateGrid().map((row) => {
             return row.map((cell) => {
@@ -54,7 +63,7 @@ export class GridMachine {
         })
     }
 
-    public wolframGrid(base = 6){
+    public wolframGrid(base = 4){
         let wolfram_params: WolframParams = {
             base:base,
             kernel: 'B',
@@ -63,7 +72,7 @@ export class GridMachine {
                 height: this.rows
             },
             init_row:{
-                mode: 'center',
+                mode: 'random',
                 group_size: 1,
             }
         }
@@ -81,9 +90,10 @@ export class GridMachine {
     private generateGrid(){
         const grid: GridCell[][] = [];
         let index = 0;
-        for(let j = 0; j < this.cols; j++){
+        for(let i = 0; i < this.rows; i++){    
             let row = [];
-            for(let i = 0; i < this.rows; i++){    
+            for(let j = 0; j < this.cols; j++){
+
                 const cell: GridCell = {
                     index: index++,
                     x: i,

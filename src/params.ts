@@ -1,4 +1,4 @@
-let len = 6000;
+let len = 2400;
 export var params = {
   canvas: {
     width: len,
@@ -6,8 +6,8 @@ export var params = {
   },
 
   grid:{
-    rows: 32,
-    cols: 32,
+    rows: 12,
+    cols: 12,
     cell:{
       population:'ordered',
       domain:{
@@ -40,19 +40,16 @@ export var params = {
   weave:{
     grid_type: 'wolfram',
     queue_length: 8,
-    smooth_oscillation_frequency: 0.25,
+    smooth_oscillation_frequency: 1000,
     smooth_iters: 8,
     smooth_iter_start: 0,
     
-    smooth_dist_ratio: 1,
-    smooth_dist_min: 0,
-    smooth_dist_max: .49,
-    smooth_dist_ratio_inc: 0.001,
+    smooth_dist_ratio: .25,
     alpha: 1,
-    stroke_cell_ratio: .6,
-    stroke_cell_ratio_min: .2,
-    stroke_cell_ratio_max: .8,
-    stroke_cell_ratio_inc: .2,
+    stroke_cell_ratio: .25,
+    stroke_cell_ratio_min: .25,
+    stroke_cell_ratio_max: 1.01,
+    stroke_cell_ratio_inc: .25,
 
     stroke_cell_oscillation_frequency: 0.03,
   },
@@ -67,8 +64,8 @@ export var params = {
   color: {
     const: false,
     const_color: 'white',
-    palette: 'hilda02',
-    // palette: 'tundra4',
+    // palette: 'hilda02',
+    palette: 'tundra4',
     // palette: 'winter-night',
     // palette: 'cc232',
     // palette: 'RdBu',
