@@ -16,8 +16,8 @@ var sketch = function (p: p5) {
   }
 
   var grid_params = {
-    width: 9,
-    height: 9,
+    width: 8,
+    height: 8,
   }
 
   var cell_width = canvas_params.width / grid_params.width
@@ -28,16 +28,19 @@ var sketch = function (p: p5) {
 
   p.setup = function () {
     setupGraphics();
+    const filters = grid_machine.filterIDs.filter((id)=>{
+      if(Math.random() > 0.5){
+        return id
+      }
+    });
+    const grid_id = grid_machine.gridIDs[Math.floor(Math.random() * grid_machine.gridIDs.length)]
     const grid_options = {
-      id: 'drop-rows',
+      id: 'checker',
+      // id: grid_id,
       width: grid_params.width,
       height: grid_params.height,
       max_value: 3,
-      filters:[
-        // 'flip-rows',
-        'flip-columns',
-        // 'invert-values'
-      ]
+      filters:[]
       
     }
     grid = grid_machine.createGrid(grid_options);

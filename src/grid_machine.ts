@@ -9,6 +9,17 @@ export class GridMachine {
         'invert-values': (grid) => this.invertValues(grid),
     }
 
+    public filterIDs = Object.keys(this.filtersLUT);
+
+    public gridIDs = [
+        'ordered',
+        'checker',
+        'random',
+        'modulus',
+        'drop-rows',
+        'drop-columns'
+    ];
+
     createGrid(options){
         let grid = this.defaultGrid(options.width, options.height);
         switch(options.id){
@@ -21,9 +32,12 @@ export class GridMachine {
         }
         this.print(grid);
         grid = this.normalize(grid)
-        options.filters.forEach((filter_id: string) => {
-            grid = this.filtersLUT[filter_id](grid);
-        })
+        if(options.filters.length > 0){
+            options.filters.forEach((filter_id: string) => {
+                grid = this.filtersLUT[filter_id](grid);
+            })
+        }
+        
         return grid;
     }
 
@@ -53,6 +67,7 @@ export class GridMachine {
         );
     }
 
+    // only work on even numbered grids
     private checker(grid){
         return grid.map((row) => {
             return row.map((cell) => {
